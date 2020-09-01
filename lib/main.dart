@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Models/global.dart';
 
 void main() {
   runApp(MyApp());
@@ -35,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
                      TabBarView(
                   children: [
                     new Container(
-                      color: Colors.grey,
+                      color: darkGreyColor,
                     ),
                     new Container(color: Colors.orange,),
                     new Container(
@@ -57,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children:
                     <Widget>[
                       
-                      Text("In a box"),
+                      Text("In a box", style: inboxTitleStyle,),
                       Container()
                     ],
 
@@ -65,7 +66,22 @@ class _MyHomePageState extends State<MyHomePage> {
 
                 ),
 
-                
+                Container(
+                 
+                    margin: EdgeInsets.only(top: 100, left: MediaQuery.of(context).size.width*0.5-27),
+                    child: FloatingActionButton(
+                      child: Container(
+                        child: Icon(Icons.add, ),
+                        
+
+                      ),
+                    
+                    backgroundColor: darkGreyColor,
+                    onPressed: (){
+                      
+                    },
+                  ),
+                )
               
                ];
     return MaterialApp(
@@ -94,11 +110,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   
                 ],
-                labelColor: Colors.yellow,
+                labelColor: darkGreyColor,
                 unselectedLabelColor: Colors.blue,
                 indicatorSize: TabBarIndicatorSize.label,
                 indicatorPadding: EdgeInsets.all(5.0),
-                indicatorColor: Colors.red,
+                indicatorColor:Colors.transparent ,
+
                 
               ),
               backgroundColor: Colors.white,
