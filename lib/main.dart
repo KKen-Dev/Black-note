@@ -1,4 +1,5 @@
 
+import 'package:Black_Note/ui/inabox/inabox_page.dart';
 import 'package:flutter/material.dart';
 import 'Models/global.dart';
 
@@ -33,48 +34,54 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
 
-    var children2 = <Widget>[
-                     TabBarView(
+  
+    return MaterialApp(
+         
+        color: Colors.yellow,
+        home: SafeArea(
+          child: DefaultTabController(
+            length: 3,
+            child: new Scaffold(
+              body: Stack(
+                children:<Widget>[ 
+                  TabBarView(
 
-                  children: [
-                    
-                    new Container(
-                      color: darkGreyColor,
-                    ),
-                    new Container(color: Colors.orange,),
-                    new Container(
-                      color: Colors.lightGreen,
-                    ),
-                  ],
-                ),
+                    children: [
+                      InaboxPage(),
+                      new Container(color: Colors.white,),
+                      new Container(
+                       color: darkGreyColor,
+                      ),
+                    ],
+                  ),
+                  
                 Container(
-                  padding: EdgeInsets.only(left: 50),
-                  height: 160,
-                
+                  padding: EdgeInsets.only(left: 65),
+
+                  height: 160,                  
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(bottomLeft : Radius.circular(50), bottomRight: Radius.circular(50)),
                     color: Colors.white,
-
+                   
+                    
                   ),
+                  
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children:
                     <Widget>[
                       
-                      Text("In a box", style: inboxTitleStyle,),
+                      
                       Container()
                     ],
-
                    )
-
-                ),
-
-                Container(
+                  ),
+                  Container(
                  
                     margin: EdgeInsets.only(top: 100, left: MediaQuery.of(context).size.width*0.5-27),
                     child: FloatingActionButton(
                       child: Container(
-                        child: Icon(Icons.add, ),
+                        child: Icon(Icons.add,),
                         
 
                       ),
@@ -85,20 +92,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ),
                 )
-              
-               ];
-    return MaterialApp(
-         
-        color: Colors.yellow,
-        home: SafeArea(
-                  child: DefaultTabController(
-            length: 3,
-            child: new Scaffold(
-              body: Stack(
-                  children:children2
+                ]
               ),
               
+
+               
               appBar: AppBar(
+                
                 elevation: 0,
               title: new TabBar(
                 tabs: [

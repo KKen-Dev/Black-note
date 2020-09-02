@@ -10,26 +10,24 @@ class _InaboxPageState extends State<InaboxPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 130),
-      color:greenGreyColor,
-      height: 100,
-      width: 100,
+      padding: EdgeInsets.only(top:180),
+      color:darkGreyColor,
+      child: ListView(children: getList(),),
     );
   }
-
-
   List<Widget> getList(){
 
-  List<InaboxCard> list = [];
+      List<InaboxCard> list = [];
 
-    for (int i=0; i<10;i++){
-      list.add(InaboxCard());
-      
-    }
+      for (int i=0; i<10;i++){
+          list.add(InaboxCard());
+          
+      }
       return list;
-  }
- 
+   }
+  
 }
+
 
   
 
