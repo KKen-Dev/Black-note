@@ -4,10 +4,12 @@ import '../../Models/global.dart';
 
 class InaboxCard extends StatelessWidget {
  final  String title;
- InaboxCard({this.title}); 
+ final String keyValue;
+ InaboxCard({this.keyValue,this.title}); 
   @override
   Widget build(BuildContext context){
     return Container(
+      key: Key(keyValue),
       margin: EdgeInsets.only(bottom: 20, right: 20,left: 20),
       height: 100,
       
