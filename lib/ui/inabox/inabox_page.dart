@@ -1,4 +1,6 @@
+import 'package:Black_Note/Models/Task.dart';
 import 'package:Black_Note/Models/widget/inbox_card_widget.dart';
+
 import 'package:flutter/material.dart';
 import '../../Models/global.dart';
 class InaboxPage extends StatefulWidget {
@@ -7,10 +9,10 @@ class InaboxPage extends StatefulWidget {
   _InaboxPageState createState() => _InaboxPageState();
 }
 class _InaboxPageState extends State<InaboxPage> {  
-  List<InaboxCard> todoItems = [];
+  List<Task> taskList = [];
   @override
   Widget build(BuildContext context) {
-    todoItems =getList();
+    taskList =getList();
     return Container(
       
       color:darkGreyColor,
@@ -24,12 +26,10 @@ class _InaboxPageState extends State<InaboxPage> {
       //),
     );
   }
-   Widget _buildListTile(BuildContext context, InaboxCard item) {
+   Widget _buildListTile(BuildContext context, Task item) {
     return ListTile(
-      key: Key(item.keyValue),
-      title: InaboxCard(
-        title: item.title,
-      ),
+      key: Key(item.taskId),
+      title: InaboxCard(title: item.title,),
     );
   }
   
@@ -40,12 +40,12 @@ class _InaboxPageState extends State<InaboxPage> {
         // handleSide: ReorderableListSimpleSide.Right,
         // handleIcon: Icon(Icons.access_alarm),
         padding: EdgeInsets.only(top: 20.0),
-        children:todoItems.map((InaboxCard item) => _buildListTile(context, item)).toList(),
+        children:taskList.map((Task item) => _buildListTile(context, item)).toList(),
         onReorder: (oldIndex, newIndex) {
           setState(() {
-            InaboxCard item = todoItems[oldIndex];
-            todoItems.remove(item);
-            todoItems.insert(newIndex, item);
+            Task item = taskList[oldIndex];
+            taskList.remove(item);
+            taskList.insert(newIndex, item);
           });
         },
     );
@@ -57,18 +57,18 @@ class _InaboxPageState extends State<InaboxPage> {
       if (newIndex > oldIndex) {
         newIndex -= 1;
       }
-      final InaboxCard item = todoItems.removeAt(oldIndex);
-      todoItems.insert(newIndex, item);
+      final Task item = taskList.removeAt(oldIndex);
+      taskList.insert(newIndex, item);
     });
   }
 
-  List<Widget> getList(){
+  List<Task> getList(){
 
       for (int i=0; i<10;i++){
-          todoItems.add(InaboxCard(keyValue: i.toString(),title: "welcome",));
+          taskList.add(Task("My first todo " + i.toString(), false, i.toString() ));
           
       }
-      return todoItems;
+      return taskList;
    }
   
 }
