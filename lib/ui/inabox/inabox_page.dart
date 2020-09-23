@@ -1,4 +1,4 @@
-import 'package:Black_Note/Models/Task.dart';
+import 'package:Black_Note/Models/classes/Task.dart';
 import 'package:Black_Note/Models/widget/inbox_card_widget.dart';
 
 import 'package:flutter/material.dart';
@@ -35,19 +35,25 @@ class _InaboxPageState extends State<InaboxPage> {
   
   Widget _buildReorderableListSimple(BuildContext context){
     
-    return ReorderableListView(
-     
-        // handleSide: ReorderableListSimpleSide.Right,
-        // handleIcon: Icon(Icons.access_alarm),
-        padding: EdgeInsets.only(top: 20.0),
-        children:taskList.map((Task item) => _buildListTile(context, item)).toList(),
-        onReorder: (oldIndex, newIndex) {
-          setState(() {
-            Task item = taskList[oldIndex];
-            taskList.remove(item);
-            taskList.insert(newIndex, item);
-          });
-        },
+    return Theme(
+          data: ThemeData(
+            canvasColor: Colors.transparent
+
+          ), 
+          child: ReorderableListView(
+       
+          // handleSide: ReorderableListSimpleSide.Right,
+          // handleIcon: Icon(Icons.access_alarm),
+          padding: EdgeInsets.only(top: 170.0),
+          children: taskList.map((Task item) => _buildListTile(context, item)).toList(),
+          onReorder: (oldIndex, newIndex) {
+            setState(() {
+              Task item = taskList[oldIndex];
+              taskList.remove(item);
+              taskList.insert(newIndex, item);
+            });
+          },
+      ),
     );
    
   }
@@ -65,7 +71,7 @@ class _InaboxPageState extends State<InaboxPage> {
   List<Task> getList(){
 
       for (int i=0; i<10;i++){
-          taskList.add(Task("My first todo " + i.toString(), false, i.toString() ));
+          taskList.add(Task("My Todo " + i.toString(), false, i.toString() ));
           
       }
       return taskList;

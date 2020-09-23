@@ -10,7 +10,7 @@ class InaboxCard extends StatelessWidget {
   Widget build(BuildContext context){
     return Container(
       key: Key(keyValue),
-      margin: EdgeInsets.only(bottom: 20, right: 20,left: 20),
+      margin: EdgeInsets.only(bottom:5),
       height: 100,
       
       decoration: BoxDecoration(
@@ -25,12 +25,12 @@ class InaboxCard extends StatelessWidget {
       ),
       child: Row(
         children: <Widget>[
-          Radio(
+          Radio( 
           
           ),
           Column(
             children: <Widget>[
-              Text(title, style: darkcardTitle,)
+              Text(title, style: darkTodoTitle,)
             ],
           )
         ],
